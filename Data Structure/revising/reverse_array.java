@@ -17,7 +17,7 @@ public class reverse_array {
             arr[last] = temp;
             
             fisrt++;
-            last--;
+            last--; 
         }
     }
 } 
