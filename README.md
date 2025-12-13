@@ -5,7 +5,7 @@ The main goal of this repo is to strengthen DSA fundamentals, improve problem-so
 This is a learning-focused repository, where understanding the concepts is more important than writing highly optimized code.
 
 #### Tech Stack
---> Java
+--> Java <br>
 --> Git & GitHub
 
 #### Status
