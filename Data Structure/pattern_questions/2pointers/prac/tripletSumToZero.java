@@ -23,6 +23,74 @@ public class tripletSumToZero{
         }
         l.addAll(set);
         
-        System.out.println(l);
+        // System.out.println(l);
+
+        System.out.println(tripletSum(arr));
+
+        System.out.println(tripletSum2(arr));
+
+    }
+    public static List<List<Integer>> tripletSum(int arr[]) {
+        Arrays.sort(arr);
+
+        HashSet<List<Integer>> s = new HashSet<>();
+        List<List<Integer>> l = new ArrayList<>();
+
+        for(int i=0; i<arr.length-2; i++) {
+            int start = i+1;
+            int end = arr.length - 1;
+
+            int sum = 0;
+            while (start < end) {
+                
+                sum = arr[i] + arr[start] + arr[end];
+
+                if(sum == 0) {
+                    s.add(Arrays.asList(arr[i],arr[start],arr[end]));
+                    start++;
+                    end--;            
+                }else if(sum > 0) {
+                    end--;
+                }else{
+                    start++;
+                }
+            }
+        }
+        l.addAll(s);
+        return l;
+    }
+    public static List<List<Integer>> tripletSum2(int arr[]) {
+        
+        Arrays.sort(arr);
+        List<List<Integer>> l = new ArrayList<>();
+
+        for(int i=0; i<arr.length-2; i++) {
+            int low = i+1;
+            int high = arr.length-1;
+
+            if(arr[i] > 0) {break;}
+            
+            if(i > 0 && arr[i] == arr[i-1]) {
+                continue;
+            }
+            while (high > low) {
+                
+                int sum = arr[i] + arr[high] + arr[low];
+
+                if(sum == 0) {
+                    l.add(Arrays.asList(arr[i],arr[high],arr[low]));
+                    low++;
+                    high--;
+
+                    while(high > low && arr[low] == arr[low-1]) { low++; }
+                    while(high > low && arr[high] == arr[high+1]) {high--;}
+                }else if(sum > 0) {
+                    high--;
+                }else{
+                    low++;
+                }
+            }
+        }
+        return l;
     }
 }
