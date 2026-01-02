@@ -35,20 +35,13 @@ public class TripletWIthSmallerSum {
         
         while(high > low) {
             s = arr[i] + arr[low] + arr[high];
-            
-            if(s >= sum){
-                high--;
+              
+            if(s < sum) {
+                count += (high - low);
+                low++;
             }else{
-                count++;
                 high--;
             }
-            
-            // if(s < sum) {
-            //     count += (high - low);
-            //     low++;
-            // }else{
-            //     high--;
-            // }
         }
       }
       return count;
