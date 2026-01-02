@@ -23,9 +23,7 @@ public class threeSumClosest {
             while(low < high) {
                 int sum = arr[i] + arr[low] + arr[high];
                 diff = Math.abs(sum-target);
-
-                
-                    
+                       
                     if(diff < min_diff) {
                         min_diff = diff;
                         closestSum = sum;
