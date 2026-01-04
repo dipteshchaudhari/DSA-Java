@@ -5,7 +5,7 @@ public class First_Question{
     public static void main(String[] args) {
         int arr[] = {100, 200, 300, 400};
         int k = 2;
-        System.out.println(subArr2(arr, k));
+        System.out.println(subArr3(arr, k));
     }
     public static int subArr(int arr[],int k){
         // Using For Loop
@@ -15,7 +15,7 @@ public class First_Question{
         
         int max = Integer.MIN_VALUE;
 
-        while (end < arr.length) {
+        // while (end < arr.length) {
             int sum = 0;    
             for(int i=start; i<=end; i++) {
                 sum = sum + arr[i];
@@ -28,7 +28,7 @@ public class First_Question{
                 start++;
                 max = Math.max(sum,max);
             }
-        }  
+        // }  
         return max; 
     }
     public static int subArr2(int arr[],int k){
@@ -50,12 +50,39 @@ public class First_Question{
            end++;
 
            sum = sum - arr[start];
+
            if(end == arr.length){
             break;
            }
            sum = sum + arr[end];
            
         }
+        return max;
+    }
+    public static int subArr3(int arr[],int k){
+    int start = 0;
+        int end = k-1;
+        int sum = 0;
+        
+        for(int i=0; i<=end; i++) {
+            sum += arr[i];
+        }
+        int max = sum;
+        
+        while(end < arr.length){
+            start++;
+            end++;
+            
+            sum = sum - arr[start-1];
+            
+            if(end == arr.length){
+                break;
+            }
+            sum = sum + arr[end];
+            
+            max = Math.max(sum,max);
+        }
+        
         return max;
     }
 }
