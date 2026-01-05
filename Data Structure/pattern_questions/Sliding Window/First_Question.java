@@ -73,11 +73,11 @@ public class First_Question{
             start++;
             end++;
             
-            sum = sum - arr[start-1];
-            
             if(end == arr.length){
                 break;
             }
+            sum = sum - arr[start-1];
+            
             sum = sum + arr[end];
             
             max = Math.max(sum,max);
