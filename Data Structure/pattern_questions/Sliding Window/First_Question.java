@@ -74,7 +74,7 @@ public class First_Question{
             end++;
             
             if(end == arr.length){
-                break;
+                break;  
             }
             sum = sum - arr[start-1];
             
