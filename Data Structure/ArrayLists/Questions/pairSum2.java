@@ -12,6 +12,7 @@ public class pairSum2 {
 
         int target = 16;
         System.out.println(pairSumInRoatedSortedArr(list, target));
+        System.out.println(practice(list, target));
     }
     public static boolean pairSumInRoatedSortedArr(ArrayList<Integer> list,int target) {
 
@@ -27,17 +28,16 @@ public class pairSum2 {
         }
         
         // this case is extra if array is not rotated,, only sorted (simply ignore this in rotated sorted question)
-
-        // if (bp == -1) {
-        //     int l = 0, r = n - 1;
-        //     while (l < r) {
-        //         int sum = list.get(l) + list.get(r);
-        //         if (sum == target) return true;
-        //         else if (sum > target) r--;
-        //         else l++;
-        //     }
-        //     return false;
-        // }
+        if (bp == -1) {
+            int l = 0, r = n - 1;
+            while (l < r) {
+                int sum = list.get(l) + list.get(r);
+                if (sum == target) return true;
+                else if (sum > target) r--;
+                else l++;
+            }
+            return false;
+        }
 
         int low = bp + 1;
         int high = bp;
@@ -52,6 +52,50 @@ public class pairSum2 {
                 high = (high-1+n)%  n;
             }else{
                 low = (low+1) %n;
+            }
+        }
+        return false;
+    }
+    public static boolean practice(ArrayList<Integer> list, int target) {
+
+        int bp = -1;
+        int n =list.size();
+        for(int i=0; i<list.size(); i++) {
+            if(list.get(i) > list.get(i+1)) {
+                bp = i;
+                break;
+            }
+        }
+        if(bp == -1) {
+            
+            int low = 0;
+            int high = list.size()-1;
+
+            while (high != low) {
+                
+                int sum = list.get(high) + list.get(low);
+                if(sum == target) {
+                    return true;
+                }else if(sum > target) {
+                    high--;
+                }else{
+                    low++;
+                }
+            }
+            return false;
+        }
+        int low = bp + 1;
+        int high = bp;
+
+        while (low != high) {
+            
+            int sum = list.get(high) + list.get(low);
+
+            if(sum == target) {return true;}
+            else if(sum > target) {
+                high = (high - 1 + n) % n;
+            }else{
+                low = (low + 1) % n;
             }
         }
         return false;
