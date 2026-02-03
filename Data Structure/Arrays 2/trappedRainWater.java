@@ -18,7 +18,7 @@ public class trappedRainWater {
             rightMax[i] = Math.max(height[i],rightMax[i+1]);
         }
 
-        // loop
+        // loop 
         int trappedRainWater = 0;
         for(int i = 0 ;i < n ; i++){
 
