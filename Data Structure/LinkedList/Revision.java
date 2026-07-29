@@ -155,6 +155,43 @@ public class Revision {
         return;
 
     }
+    public Node midNode(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+    public boolean palindromeOrNot(Node head) {
+        
+        Node mid = midNode(head);
+
+        Node prev = null;
+        Node curr = mid;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        Node left = head;
+        Node right = prev;
+
+        while (right != null) {
+            if(left.data != right.data){
+                return false;
+            }
+            left = left.next;
+            right = right.next;
+        }
+        return true;
+    }
     public static void main(String[] args) {
         Revision l1 = new Revision();
         // l1.head = new Node(1);
@@ -163,13 +200,14 @@ public class Revision {
 
         l1.addFirst(1);
         l1.addFirst(0);
-        l1.addLast(2);
+        l1.addLast(1);
+        l1.addLast(0);
         l1.printL();
-        System.out.println("the size of List:"+size);
+        // System.out.println("the size of List:"+size);
 
-        l1.addAtIndex(5, 1);
-        l1.printL();
-        System.out.println("the size of List:"+size);
+        // l1.addAtIndex(5, 1);
+        // l1.printL();
+        // System.out.println("the size of List:"+size);
 
         // l1.removeFirst();
         // l1.printL();
@@ -181,10 +219,12 @@ public class Revision {
 
         // System.out.println(l1.SearchKey(1));
 
-        l1.reverseLL();
-        l1.printL();
+        // l1.reverseLL();
+        // l1.printL();
 
-        l1.removeNthNodeFromEnd(3);
-        l1.printL();
+        // l1.removeNthNodeFromEnd(3);
+        // l1.printL();
+
+        System.out.println(l1.palindromeOrNot(head));   
     }
 }
