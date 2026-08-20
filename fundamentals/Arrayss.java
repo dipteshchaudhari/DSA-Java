@@ -1,3 +1,5 @@
+import java.util.HashSet;
+
 public class Arrayss {
     void reverseArr(int arr[]){
 
@@ -108,6 +110,7 @@ public class Arrayss {
 
 
         //linear Search :
+
         int target = 90;
         obj.LinearSearch(arr,target);
 
@@ -115,6 +118,7 @@ public class Arrayss {
         System.out.println();
         System.out.println();
         System.out.println("------- Count Even Numbers-------");
+
         // Count Even Numbers
 
         int arr3[] = {12, 7, 8, 15, 20, 3, 6};
@@ -132,6 +136,7 @@ public class Arrayss {
         System.out.println();
         System.out.println();
         System.out.println("-------Problem 6 : Find Second Largest-------");
+
         // Problem 6 — Find Second Largest
 
         
@@ -221,6 +226,84 @@ public class Arrayss {
             System.out.println();
         }
         System.out.println("sum of 2d array elements are : "+summ);
+
+
+        // Count positive numbers
+
+        int arr7[] = {-2, 5, -7, 8, 10, -1, 3};  
+
+        int pos = 0;
+        for(int i=0; i<arr7.length; i++){
+            if(arr7[i] > 0){
+                pos++;
+            }
+        }
+        System.out.println("Total Positive numbers are :"+pos);
+
+
+        // Find the second smallest
+
+        int arr8[] = {15, 4, 9, 2, 20, 7};
+
+        int Smallest = arr8[0];
+        int second_smallest = Integer.MAX_VALUE;  
+
+        for(int i=1; i<arr8.length; i++){
+
+            if(arr8[i] < Smallest){
+                second_smallest = Smallest;
+                Smallest = arr8[i];
+            }else if(arr8[i] < second_smallest){
+                second_smallest = arr8[i];
+            }
+        }
+
+        System.out.println("Second smallerst number is :" +second_smallest);
+
+
+        // Check if an array is sorted
+        int arr9[] = {2, 4, 6, 8, 10};
+
+        Boolean sort = true;
+        for(int i=0; i<arr9.length-1; i++){
+
+            if(arr9[i] > arr9[i+1]){
+                sort = false;
+                break;
+            }
+        }
+        if(sort){
+            System.out.println("Array is sorted.");
+        }else{
+            System.out.println("Array is not sored");
+        }
         
+
+        // find the duplicate elements 
+        int[] arr10 = {1, 3, 4, 3, 5, 1};
+
+        // for(int i=0; i<arr10.length-1; i++){
+        //     for(int j=i+1; j<arr10.length; j++) {
+
+        //         if(arr10[i] == arr10[j]){
+        //             System.out.print(arr10[i] + " ");
+        //         }
+        //     }
+        // }
+
+        // find the duplicates using hashset
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for(int i=0; i<arr10.length; i++) {
+            
+            if(set.contains(arr10[i])){
+                System.out.println(arr10[i] +" ");
+            }else{
+                set.add(arr10[i]);
+            }
+        }
+
+
      }
 }
